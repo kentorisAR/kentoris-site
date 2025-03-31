@@ -12,21 +12,25 @@
             padding: 0;
             background-color: #f4f4f4; /* Светлый фон по умолчанию */
             color: #333; /* Темный текст по умолчанию */
+            transition: background-color 0.5s, color 0.5s;
         }
         header {
             background: #ddd;
             color: #333;
             padding: 15px;
             font-size: 24px;
+            transition: background-color 0.5s, color 0.5s;
         }
         nav {
             background: #eee;
             padding: 10px;
+            transition: background-color 0.5s;
         }
         nav a {
             color: #333;
             margin: 10px;
             text-decoration: none;
+            transition: color 0.5s;
         }
         nav a:hover {
             text-decoration: underline;
@@ -37,12 +41,15 @@
             margin: 20px auto;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s, box-shadow 0.5s;
         }
         section h2 {
             margin-top: 20px;
+            transition: color 0.5s;
         }
         section p {
             line-height: 1.6;
+            transition: color 0.5s;
         }
         #theme-toggle {
             position: fixed;
@@ -51,9 +58,21 @@
             background: none;
             border: none;
             cursor: pointer;
+            width: 30px;
+            height: 30px;
+            transition: transform 0.5s;
         }
-        #theme-toggle img {
-            width: 30px; /* Размер изображения */
+        #theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ffc107; /* Цвет солнца */
+            box-shadow: 0 0 10px #ffc107; /* Свечение солнца */
         }
         .dark-theme {
             background-color: #121212;
@@ -78,6 +97,12 @@
         }
         .dark-theme section p {
             color: #e0e0e0;
+        }
+        .dark-theme #theme-toggle::before {
+            background-color: #888; /* Цвет луны */
+            box-shadow: 0 0 10px #888; /* Свечение луны */
+            border-radius: 50% 50% 0 50%; /* Форма луны */
+            transform: translate(-50%, -50%) rotate(45deg); /* Поворот луны */
         }
     </style>
 </head>
@@ -109,9 +134,7 @@
         <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
     </section>
 
-    <button id="theme-toggle">
-        <img src="sun.png" alt="Светлая тема">
-    </button>
+    <button id="theme-toggle"></button>
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
@@ -119,11 +142,6 @@
 
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
-            if (body.classList.contains('dark-theme')) {
-                themeToggle.innerHTML = '<img src="moon.png" alt="Темная тема">';
-            } else {
-                themeToggle.innerHTML = '<img src="sun.png" alt="Светлая тема">';
-            }
         });
     </script>
 
