@@ -46,12 +46,30 @@
             position: absolute;
             bottom: 0;
             height: 3px;
-            background-color: blue;
+            background: linear-gradient(to right, #00ffff, #ff00ff); /* Неоновая полоска */
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; /* Неоновое свечение */
             transition: left 0.3s ease, width 0.3s ease;
         }
 
         section {
             padding: 20px;
+        }
+
+        /* Стиль кнопки переключения темы */
+        #theme-toggle {
+            position: fixed; /* Фиксированное положение */
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px; /* Увеличим размер */
+            padding: 5px 10px; /* Добавим отступы */
+            transition: transform 0.3s ease; /* Добавим анимацию */
+        }
+
+        #theme-toggle.dark-mode {
+            transform: rotate(180deg); /* Поворот при темной теме */
         }
     </style>
 </head>
@@ -71,8 +89,7 @@
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle">Переключить тему</button>
-    </section>
+        <button id="theme-toggle">☼</button> </section>
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
@@ -82,6 +99,8 @@
 
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
+            themeToggle.classList.toggle('dark-mode'); // Добавляем класс для анимации
+            themeToggle.textContent = body.classList.contains('dark-mode') ? '☾' : '☼'; // Меняем значок
         });
 
         navLinks.forEach(link => {
