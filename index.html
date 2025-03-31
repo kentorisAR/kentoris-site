@@ -130,38 +130,3 @@
     </section>
 
     <button id="theme-toggle">Сменить тему</button>
-
-    <script>
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('section');
-        const indicator = document.getElementById('indicator');
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = link.dataset.target;
-                sections.forEach(section => {
-                    section.style.display = 'none';
-                });
-                document.getElementById(target).style.display = 'block';
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-                link.classList.add('active');
-                indicator.style.left = link.offsetLeft + 'px';
-                indicator.style.width = link.offsetWidth + 'px';
-            });
-        });
-
-        indicator.style.left = navLinks[0].offsetLeft + 'px';
-        indicator.style.width = navLinks[0].offsetWidth + 'px';
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
-        });
-    </script>
-
-</body>
-</html>
