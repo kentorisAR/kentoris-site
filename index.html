@@ -58,21 +58,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            width: 30px;
-            height: 30px;
-            transition: transform 0.5s;
-        }
-        #theme-toggle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #ffc107;
-            box-shadow: 0 0 10px #ffc107;
+            font-size: 16px;
         }
         .dark-theme {
             background-color: #121212;
@@ -98,13 +84,7 @@
         .dark-theme section p {
             color: #e0e0e0;
         }
-        .dark-theme #theme-toggle::before {
-            background-color: #888;
-            box-shadow: 0 0 10px #888;
-            border-radius: 50% 50% 0 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        #effect {
+        #gradient-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -112,11 +92,11 @@
             height: 100%;
             background: linear-gradient(to right, #ff6e7f, #bfe9ff, #ff6e7f);
             background-size: 300% 100%;
-            animation: gradient 10s linear infinite;
+            animation: gradientAnimation 10s linear infinite;
             z-index: -1;
             opacity: 0.5;
         }
-        @keyframes gradient {
+        @keyframes gradientAnimation {
             0% {
                 background-position: 0 50%;
             }
@@ -138,4 +118,37 @@
     <nav>
         <a href="#main">Главная</a>
         <a href="#about">О проекте</a>
-        <a href
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <section id="main">
+        <h1>Добро пожаловать!</h1>
+        <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
+    </section>
+
+    <section id="about">
+        <h2>О проекте</h2>
+        <p>Этот проект создан для любителей игровых вселенных, которые хотят глубже погрузиться в их историю и лор. Мы будем публиковать статьи, видео и другие материалы, посвященные различным играм.</p>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Вы можете связаться с нами по электронной почте: <a href="mailto:kentoris@example.com">kentoris@example.com</a></p>
+        <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
+    </section>
+
+    <button id="theme-toggle">Сменить тему</button>
+
+    <div id="gradient-bg"></div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+        });
+    </script>
+
+</body>
+</html>
