@@ -5,28 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kentoris Site</title>
     <style>
-        /* ... (ваши стили) ... */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Светлый фон по умолчанию */
+            color: #333; /* Темный текст по умолчанию */
+        }
+        header {
+            background: #ddd;
+            color: #333;
+            padding: 15px;
+            font-size: 24px;
+        }
+        nav {
+            background: #eee;
+            padding: 10px;
+        }
+        nav a {
+            color: #333;
+            margin: 10px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            margin-top: 20px;
+        }
+        section p {
+            line-height: 1.6;
+        }
+        #theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #theme-toggle img {
+            width: 30px; /* Размер изображения */
+        }
+        .dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .dark-theme header {
+            background-color: #212121;
+            color: white;
+        }
+        .dark-theme nav {
+            background-color: #333;
+        }
+        .dark-theme nav a {
+            color: #e0e0e0;
+        }
+        .dark-theme section {
+            background-color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .dark-theme section h2 {
+            color: #e0e0e0;
+        }
+        .dark-theme section p {
+            color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
 
-    <audio id="background-music" loop preload="auto">
-        <source src="relaxing-music.mp3" type="audio/mpeg">
-    </audio>
+    <header>
+        Kentoris Site
+    </header>
+
+    <nav>
+        <a href="#main">Главная</a>
+        <a href="#about">О проекте</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <section id="main">
+        <h1>Добро пожаловать!</h1>
+        <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
+    </section>
+
+    <section id="about">
+        <h2>О проекте</h2>
+        <p>Этот проект создан для любителей игровых вселенных, которые хотят глубже погрузиться в их историю и лор. Мы будем публиковать статьи, видео и другие материалы, посвященные различным играм.</p>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Вы можете связаться с нами по электронной почте: <a href="mailto:kentoris@example.com">kentoris@example.com</a></p>
+        <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
+    </section>
+
+    <button id="theme-toggle">
+        <img src="sun.png" alt="Светлая тема">
+    </button>
 
     <script>
-        // ... (ваш JavaScript) ...
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
 
-        const backgroundMusic = document.getElementById('background-music');
-
-        document.addEventListener('touchstart', function() {
-            backgroundMusic.play();
-        }, { once: true });
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<img src="moon.png" alt="Темная тема">';
+            } else {
+                themeToggle.innerHTML = '<img src="sun.png" alt="Светлая тема">';
+            }
+        });
     </script>
-
-    <style>
-        /* ... (ваши стили) ... */
-    </style>
 
 </body>
 </html>
