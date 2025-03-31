@@ -5,172 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kentoris Site</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        header {
-            background: #212121;
-            color: white;
-            padding: 15px;
-            font-size: 24px;
-        }
-        nav {
-            background: #333;
-            padding: 10px;
-        }
-        nav a {
-            color: #e0e0e0;
-            margin: 10px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #333;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        section h2 {
-            margin-top: 20px;
-            color: #e0e0e0;
-        }
-        section p {
-            line-height: 1.6;
-            color: #e0e0e0;
-        }
-        #theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        audio {
-            display: none;
-        }
+        /* ... (ваши стили) ... */
     </style>
 </head>
 <body>
 
-    <header>
-        Kentoris Site
-    </header>
-
-    <nav>
-        <a href="#main">Главная</a>
-        <a href="#about">О проекте</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
-
-    <div id="content">
-        <section id="main">
-            <h1>Добро пожаловать!</h1>
-            <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
-        </section>
-    </div>
-
-    <button id="theme-toggle">Светлая тема</button>
-
-    <audio id="background-music" loop autoplay>
+    <audio id="background-music" loop preload="auto">
         <source src="relaxing-music.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
+        // ... (ваш JavaScript) ...
+
         const backgroundMusic = document.getElementById('background-music');
-        const content = document.getElementById('content');
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            if (body.classList.contains('light-theme')) {
-                themeToggle.textContent = 'Темная тема';
-            } else {
-                themeToggle.textContent = 'Светлая тема';
-            }
-        });
-
-        function loadContent(page) {
-            let pageContent = '';
-            switch (page) {
-                case 'main':
-                    pageContent = `<section id="main">
-                                        <h1>Добро пожаловать!</h1>
-                                        <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
-                                    </section>`;
-                    break;
-                case 'about':
-                    pageContent = `<section id="about">
-                                        <h2>О проекте</h2>
-                                        <p>Этот проект создан для любителей игровых вселенных, которые хотят глубже погрузиться в их историю и лор. Мы будем публиковать статьи, видео и другие материалы, посвященные различным играм.</p>
-                                    </section>`;
-                    break;
-                case 'contacts':
-                    pageContent = `<section id="contacts">
-                                        <h2>Контакты</h2>
-                                        <p>Вы можете связаться с нами по электронной почте: <a href="mailto:kentoris@example.com">kentoris@example.com</a></p>
-                                        <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
-                                    </section>`;
-                    break;
-                default:
-                    pageContent = `<section id="main">
-                                        <h1>Добро пожаловать!</h1>
-                                        <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
-                                    </section>`;
-            }
-            content.innerHTML = pageContent;
-        }
-
-        window.addEventListener('hashchange', () => {
-            const page = window.location.hash.substring(1);
-            loadContent(page);
-        });
-
-        // Загрузка главной страницы при загрузке сайта
-        if (window.location.hash) {
-            loadContent(window.location.hash.substring(1));
-        } else {
-            loadContent('main');
-        }
+        document.addEventListener('touchstart', function() {
+            backgroundMusic.play();
+        }, { once: true });
     </script>
 
     <style>
-        .light-theme {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .light-theme header {
-            background-color: #ddd;
-            color: #333;
-        }
-        .light-theme nav {
-            background-color: #eee;
-        }
-        .light-theme nav a {
-            color: #333;
-        }
-        .light-theme section {
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .light-theme section h2 {
-            color: #333;
-        }
-        .light-theme section p {
-            color: #333;
-        }
+        /* ... (ваши стили) ... */
     </style>
 
 </body>
