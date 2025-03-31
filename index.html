@@ -46,8 +46,8 @@
             position: absolute;
             bottom: 0;
             height: 3px;
-            background: linear-gradient(to right, #00ffff, #ff00ff); /* Неоновая полоска */
-            box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; /* Неоновое свечение */
+            background: linear-gradient(to right, #00ffff, #ff00ff);
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
             transition: left 0.3s ease, width 0.3s ease;
         }
 
@@ -55,21 +55,20 @@
             padding: 20px;
         }
 
-        /* Стиль кнопки переключения темы */
         #theme-toggle {
-            position: fixed; /* Фиксированное положение */
-            top: 20px;
+            position: fixed;
+            top: 10px; /* Изменено значение */
             right: 20px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 24px; /* Увеличим размер */
-            padding: 5px 10px; /* Добавим отступы */
-            transition: transform 0.3s ease; /* Добавим анимацию */
+            font-size: 24px;
+            padding: 5px 10px;
+            transition: transform 0.3s ease;
         }
 
         #theme-toggle.dark-mode {
-            transform: rotate(180deg); /* Поворот при темной теме */
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -89,7 +88,8 @@
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle">☼</button> </section>
+        <button id="theme-toggle">☼</button>
+    </section>
 
     <script>
         const themeToggle = document.getElementById('theme-toggle');
@@ -99,8 +99,8 @@
 
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
-            themeToggle.classList.toggle('dark-mode'); // Добавляем класс для анимации
-            themeToggle.textContent = body.classList.contains('dark-mode') ? '☾' : '☼'; // Меняем значок
+            themeToggle.classList.toggle('dark-mode');
+            themeToggle.textContent = body.classList.contains('dark-mode') ? '☾' : '☼';
         });
 
         navLinks.forEach(link => {
@@ -110,7 +110,6 @@
             });
         });
 
-        // Устанавливаем начальное положение индикатора
         navIndicator.style.left = navLinks[0].offsetLeft + 'px';
         navIndicator.style.width = navLinks[0].offsetWidth + 'px';
     </script>
