@@ -23,14 +23,28 @@
         nav {
             background: #eee;
             padding: 10px;
+            position: relative;
         }
         nav a {
             color: #333;
             margin: 10px;
             text-decoration: none;
+            position: relative;
         }
         nav a:hover {
             text-decoration: underline;
+        }
+        .active {
+            font-weight: bold;
+        }
+        #indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #333;
+            transition: left 0.3s ease, width 0.3s ease;
         }
         section {
             padding: 20px;
@@ -38,12 +52,15 @@
             margin: 20px auto;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.5s, box-shadow 0.5s;
         }
         section h2 {
             margin-top: 20px;
+            transition: color 0.5s;
         }
         section p {
             line-height: 1.6;
+            transition: color 0.5s;
         }
         #theme-toggle {
             position: fixed;
@@ -68,6 +85,9 @@
         .dark-theme nav a {
             color: #e0e0e0;
         }
+        .dark-theme #indicator {
+            background-color: #e0e0e0;
+        }
         .dark-theme section {
             background-color: #333;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -78,29 +98,6 @@
         .dark-theme section p {
             color: #e0e0e0;
         }
-        #gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #ff6e7f, #bfe9ff, #ff6e7f);
-            background-size: 300% 100%;
-            animation: gradientAnimation 10s linear infinite;
-            z-index: -1;
-            opacity: 0.5;
-        }
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0 50%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -110,9 +107,10 @@
     </header>
 
     <nav>
-        <a href="#main">Главная</a>
-        <a href="#about">О проекте</a>
-        <a href="#contacts">Контакты</a>
+        <a href="#main" data-target="main" class="active">Главная</a>
+        <a href="#about" data-target="about">О проекте</a>
+        <a href="#contacts" data-target="contacts">Контакты</a>
+        <div id="indicator"></div>
     </nav>
 
     <section id="main">
@@ -120,12 +118,12 @@
         <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
     </section>
 
-    <section id="about">
+    <section id="about" style="display: none;">
         <h2>О проекте</h2>
         <p>Этот проект создан для любителей игровых вселенных, которые хотят глубже погрузиться в их историю и лор. Мы будем публиковать статьи, видео и другие материалы, посвященные различным играм.</p>
     </section>
 
-    <section id="contacts">
+    <section id="contacts" style="display: none;">
         <h2>Контакты</h2>
         <p>Вы можете связаться с нами по электронной почте: <a href="mailto:kentoris@example.com">kentoris@example.com</a></p>
         <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
@@ -133,16 +131,28 @@
 
     <button id="theme-toggle">Сменить тему</button>
 
-    <div id="gradient-bg"></div>
-
     <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+        const indicator = document.getElementById('indicator');
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.dataset.target;
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(target).style.display = 'block';
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                link.classList.add('active');
+                indicator.style.left = link.offsetLeft + 'px';
+                indicator.style.width = link.offsetWidth + 'px';
+            });
         });
-    </script>
 
-</body>
-</html>
+        indicator.style.left = navLinks[0].offsetLeft + 'px';
