@@ -57,18 +57,31 @@
 
         #theme-toggle {
             position: fixed;
-            top: -5px; /* Уменьшаем значение top */
-            right: 18px;
+            top: 10px;
+            right: 20px;
             background: none;
             border: none;
             cursor: pointer;
             font-size: 47px;
-            padding: 5px 10px;
+            display: flex;
+            align-items: center;
             transition: transform 0.3s ease;
         }
 
         #theme-toggle.dark-mode {
             transform: rotate(180deg);
+        }
+
+        #theme-toggle span {
+            display: inline-block;
+        }
+
+        #theme-toggle span:first-child {
+            transform: translateY(-2px);
+        }
+
+        #theme-toggle span:last-child {
+            transform: translateY(2px);
         }
     </style>
 </head>
@@ -88,7 +101,7 @@
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle">☼-</button>
+        <button id="theme-toggle"><span>☼</span><span>-</span></button>
     </section>
 
     <script>
@@ -100,7 +113,7 @@
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             themeToggle.classList.toggle('dark-mode');
-            themeToggle.textContent = body.classList.contains('dark-mode') ? '☾+' : '☼-';
+            themeToggle.innerHTML = body.classList.contains('dark-mode') ? '<span>☾</span><span>+</span>' : '<span>☼</span><span>-</span>';
         });
 
         navLinks.forEach(link => {
