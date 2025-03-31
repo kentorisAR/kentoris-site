@@ -10,25 +10,52 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Темный фон */
+            color: #e0e0e0; /* Светлый текст */
         }
         header {
-            background: #333;
+            background: #212121;
             color: white;
             padding: 15px;
             font-size: 24px;
         }
         nav {
-            background: #444;
+            background: #333;
             padding: 10px;
         }
         nav a {
-            color: white;
+            color: #e0e0e0;
             margin: 10px;
             text-decoration: none;
         }
+        nav a:hover {
+            text-decoration: underline;
+        }
         section {
             padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #333; /* Темный фон разделов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        section h2 {
+            margin-top: 20px;
+            color: #e0e0e0;
+        }
+        section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        #theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -39,14 +66,69 @@
     </header>
 
     <nav>
-        <a href="#">Главная</a>
-        <a href="#">О проекте</a>
+        <a href="#main">Главная</a>
+        <a href="#about">О проекте</a>
+        <a href="#contacts">Контакты</a>
     </nav>
 
-    <section>
+    <section id="main">
         <h1>Добро пожаловать!</h1>
-        <p>Здесь будет информация о лоре игровых вселенных.</p>
+        <p>Здесь будет информация о лоре игровых вселенных. Мы планируем делиться интересными фактами, теориями и анализом различных игровых миров.</p>
     </section>
+
+    <section id="about">
+        <h2>О проекте</h2>
+        <p>Этот проект создан для любителей игровых вселенных, которые хотят глубже погрузиться в их историю и лор. Мы будем публиковать статьи, видео и другие материалы, посвященные различным играм.</p>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Вы можете связаться с нами по электронной почте: <a href="mailto:kentoris@example.com">kentoris@example.com</a></p>
+        <p>Или через наши социальные сети: <a href="#">Twitter</a>, <a href="#">Facebook</a>.</p>
+    </section>
+
+    <button id="theme-toggle">Светлая тема</button>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            if (body.classList.contains('light-theme')) {
+                themeToggle.textContent = 'Темная тема';
+            } else {
+                themeToggle.textContent = 'Светлая тема';
+            }
+        });
+    </script>
+
+    <style>
+        .light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .light-theme header {
+            background-color: #ddd;
+            color: #333;
+        }
+        .light-theme nav {
+            background-color: #eee;
+        }
+        .light-theme nav a {
+            color: #333;
+        }
+        .light-theme section {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .light-theme section h2 {
+            color: #333;
+        }
+        .light-theme section p {
+            color: #333;
+        }
+    </style>
 
 </body>
 </html>
