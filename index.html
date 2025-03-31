@@ -11,22 +11,45 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        body.dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
         header {
             background: #333;
             color: white;
             padding: 15px;
             font-size: 24px;
         }
+
         nav {
             background: #444;
             padding: 10px;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
         }
+
         nav a {
             color: white;
             margin: 10px;
             text-decoration: none;
+            padding: 10px;
+            position: relative;
         }
+
+        #nav-indicator {
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            background-color: blue;
+            transition: left 0.3s ease, width 0.3s ease;
+        }
+
         section {
             padding: 20px;
         }
@@ -42,12 +65,36 @@
         <a href="#">Главная</a>
         <a href="#">О проекте</a>
         <a href="#">Контакты</a>
+        <div id="nav-indicator"></div>
     </nav>
 
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
+        <button id="theme-toggle">Переключить тему</button>
     </section>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const navLinks = document.querySelectorAll('nav a');
+        const navIndicator = document.getElementById('nav-indicator');
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navIndicator.style.left = e.target.offsetLeft + 'px';
+                navIndicator.style.width = e.target.offsetWidth + 'px';
+            });
+        });
+
+        // Устанавливаем начальное положение индикатора
+        navIndicator.style.left = navLinks[0].offsetLeft + 'px';
+        navIndicator.style.width = navLinks[0].offsetWidth + 'px';
+    </script>
 
 </body>
 </html>
