@@ -57,7 +57,7 @@
 
         #theme-toggle {
             position: fixed;
-            top: 10px;
+            top: 0px; /* Изменяем значение top на 0 */
             right: 20px;
             background: none;
             border: none;
@@ -113,7 +113,7 @@
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             themeToggle.classList.toggle('dark-mode');
-            themeToggle.innerHTML = body.classList.contains('dark-mode') ? '<span>☾</span><span>+</span>' : '<span>☼</span><span>-</span>';
+            themeToggle.innerHTML = body.classList.contains('dark-mode') ? '<span>☾</span><span>+</span>' : '<span>☼-</span>';
         });
 
         navLinks.forEach(link => {
