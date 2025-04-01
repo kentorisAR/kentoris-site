@@ -24,6 +24,7 @@
             color: white;
             padding: 15px;
             font-size: 24px;
+            text-align: center; /* Добавляем центрирование текста */
         }
 
         nav {
@@ -57,7 +58,7 @@
 
         #theme-toggle {
             position: fixed;
-            top: 0px; /* Изменяем значение top на 0 */
+            top: 0px;
             right: 20px;
             background: none;
             border: none;
@@ -88,20 +89,20 @@
 <body>
 
     <header>
-        Kentoris Site
+        Kentoris
     </header>
 
     <nav>
         <a href="#">Главная</a>
         <a href="#">О проекте</a>
         <a href="#">Контакты</a>
-        <div id="nav-indicator"></div>
+        <a href="worlds.html">Миры</a> <div id="nav-indicator"></div>
     </nav>
 
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle"><span>☼</span><span>-</span></button>
+        <button id="theme-toggle"><span>☼-</span></button>
     </section>
 
     <script>
