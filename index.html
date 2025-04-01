@@ -104,28 +104,8 @@
         <button id="theme-toggle"><span>☼</span><span>-</span></button>
     </section>
 
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const navLinks = document.querySelectorAll('nav a');
-        const navIndicator = document.getElementById('nav-indicator');
+   <script src="script.js"></script>
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            themeToggle.classList.toggle('dark-mode');
-            themeToggle.innerHTML = body.classList.contains('dark-mode') ? '<span>☾</span><span>+</span>' : '<span>☼-</span>';
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                navIndicator.style.left = e.target.offsetLeft + 'px';
-                navIndicator.style.width = e.target.offsetWidth + 'px';
-            });
-        });
-
-        navIndicator.style.left = navLinks[0].offsetLeft + 'px';
-        navIndicator.style.width = navLinks[0].offsetWidth + 'px';
-    </script>
 
 </body>
 </html>
