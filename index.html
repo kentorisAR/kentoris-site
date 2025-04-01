@@ -29,9 +29,9 @@
         nav {
             background: #444;
             padding: 10px;
-            position: relative;
             display: flex;
             justify-content: space-around;
+            position: relative;
         }
 
         nav a {
@@ -57,31 +57,17 @@
 
         #theme-toggle {
             position: fixed;
-            top: 0px; /* Изменяем значение top на 0 */
+            top: 10px;
             right: 20px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 47px;
-            display: flex;
-            align-items: center;
+            font-size: 30px;
             transition: transform 0.3s ease;
         }
 
         #theme-toggle.dark-mode {
             transform: rotate(180deg);
-        }
-
-        #theme-toggle span {
-            display: inline-block;
-        }
-
-        #theme-toggle span:first-child {
-            transform: translateY(-2px);
-        }
-
-        #theme-toggle span:last-child {
-            transform: translateY(2px);
         }
     </style>
 </head>
@@ -92,20 +78,58 @@
     </header>
 
     <nav>
-    <a href="index.html">Главная</a>
-    <a href="worlds.html">Миры</a>
-    <a href="#">О проекте</a>
-    <div id="nav-indicator"></div>
-</nav>
+        <a href="index.html">Главная</a>
+        <a href="worlds.html">Миры</a>
+        <div id="nav-indicator"></div>
+    </nav>
 
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle"><span>☼</span><span>-</span></button>
+        <button id="theme-toggle">☼</button>
     </section>
 
-   <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Тема (сохранение в localStorage)
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
 
+            function applyTheme() {
+                if (localStorage.getItem('darkMode') === 'true') {
+                    body.classList.add('dark-mode');
+                    themeToggle.classList.add('dark-mode');
+                    themeToggle.textContent = '☾';
+                } else {
+                    body.classList.remove('dark-mode');
+                    themeToggle.classList.remove('dark-mode');
+                    themeToggle.textContent = '☼';
+                }
+            }
+
+            themeToggle.addEventListener('click', () => {
+                localStorage.setItem('darkMode', localStorage.getItem('darkMode') === 'true' ? 'false' : 'true');
+                applyTheme();
+            });
+
+            applyTheme();
+
+            // Навигационный индикатор
+            const navLinks = document.querySelectorAll('nav a');
+            const navIndicator = document.getElementById('nav-indicator');
+
+            function updateIndicator() {
+                const activeLink = [...navLinks].find(link => link.href.includes(window.location.pathname.split('/').pop()));
+                if (activeLink) {
+                    navIndicator.style.left = activeLink.offsetLeft + 'px';
+                    navIndicator.style.width = activeLink.offsetWidth + 'px';
+                }
+            }
+
+            updateIndicator();
+            window.addEventListener('resize', updateIndicator);
+        });
+    </script>
 
 </body>
 </html>
