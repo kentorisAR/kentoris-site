@@ -1,2 +1,2 @@
-# kentoris-site
+# kentoris
 Сайт с лором игровых вселенных
