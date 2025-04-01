@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kentoris</title>
     <style>
+        /* Ваши стили CSS */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -15,12 +16,16 @@
             overflow-x: hidden;
         }
 
+        body.dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
         header {
             background: #333;
             color: white;
             padding: 15px;
             font-size: 24px;
-            text-align: center;
         }
 
         nav {
@@ -100,10 +105,9 @@
     </header>
 
     <nav>
-        <a href="#">Главная</a>
-        <a href="#">О проекте</a>
-        <a href="#">Контакты</a>
-        <a href="worlds.html">Миры</a> <div id="nav-indicator"></div>
+        <a href="index.html">Главная</a>
+        <a href="worlds.html">Миры</a>
+        <div id="nav-indicator"></div>
     </nav>
 
     <section>
@@ -113,6 +117,7 @@
     </section>
 
     <script>
+        // Ваш JavaScript код
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const navLinks = document.querySelectorAll('nav a');
