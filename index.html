@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kentoris</title>
+    <title>Kentoris Site</title>
     <style>
-        /* Ваши стили CSS */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -13,7 +12,6 @@
             padding: 0;
             background-color: #f4f4f4;
             transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
         }
 
         body.dark-mode {
@@ -59,7 +57,7 @@
 
         #theme-toggle {
             position: fixed;
-            top: 0px;
+            top: 0px; /* Изменяем значение top на 0 */
             right: 20px;
             background: none;
             border: none;
@@ -85,39 +83,28 @@
         #theme-toggle span:last-child {
             transform: translateY(2px);
         }
-
-        /* Стили для мобильных устройств */
-        @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 5px;
-            }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        Kentoris
+        Kentoris Site
     </header>
 
     <nav>
-        <a href="index.html">Главная</a>
-        <a href="worlds.html">Миры</a>
+        <a href="#">Главная</a>
+        <a href="#">О проекте</a>
+        <a href="#">Контакты</a>
         <div id="nav-indicator"></div>
     </nav>
 
     <section>
         <h1>Добро пожаловать!</h1>
         <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle"><span>☼-</span></button>
+        <button id="theme-toggle"><span>☼</span><span>-</span></button>
     </section>
 
     <script>
-        // Ваш JavaScript код
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const navLinks = document.querySelectorAll('nav a');
