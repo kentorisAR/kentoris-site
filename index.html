@@ -12,121 +12,29 @@
             padding: 0;
             background-color: #f4f4f4;
             transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
         }
 
-        body.dark-mode {
-            background-color: #333;
-            color: white;
-        }
+        /* Остальные стили... */
 
-        header {
-            background: #333;
-            color: white;
-            padding: 15px;
-            font-size: 24px;
-            text-align: center; /* Добавляем центрирование текста */
-        }
+        /* Стили для мобильных устройств */
+        @media (max-width: 600px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
 
-        nav {
-            background: #444;
-            padding: 10px;
-            position: relative;
-            display: flex;
-            justify-content: space-around;
-        }
+            nav {
+                flex-direction: column; /* Изменяем направление навигации на вертикальное */
+            }
 
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-            padding: 10px;
-            position: relative;
-        }
-
-        #nav-indicator {
-            position: absolute;
-            bottom: 0;
-            height: 3px;
-            background: linear-gradient(to right, #00ffff, #ff00ff);
-            box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
-            transition: left 0.3s ease, width 0.3s ease;
-        }
-
-        section {
-            padding: 20px;
-        }
-
-        #theme-toggle {
-            position: fixed;
-            top: 0px;
-            right: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 47px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
-
-        #theme-toggle.dark-mode {
-            transform: rotate(180deg);
-        }
-
-        #theme-toggle span {
-            display: inline-block;
-        }
-
-        #theme-toggle span:first-child {
-            transform: translateY(-2px);
-        }
-
-        #theme-toggle span:last-child {
-            transform: translateY(2px);
+            nav a {
+                margin: 5px; /* Уменьшаем отступы между ссылками */
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        Kentoris
-    </header>
-
-    <nav>
-        <a href="#">Главная</a>
-        <a href="#">О проекте</a>
-        <a href="#">Контакты</a>
-        <a href="worlds.html">Миры</a> <div id="nav-indicator"></div>
-    </nav>
-
-    <section>
-        <h1>Добро пожаловать!</h1>
-        <p>Здесь будет информация о лоре игровых вселенных.</p>
-        <button id="theme-toggle"><span>☼-</span></button>
-    </section>
-
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const navLinks = document.querySelectorAll('nav a');
-        const navIndicator = document.getElementById('nav-indicator');
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            themeToggle.classList.toggle('dark-mode');
-            themeToggle.innerHTML = body.classList.contains('dark-mode') ? '<span>☾</span><span>+</span>' : '<span>☼-</span>';
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                navIndicator.style.left = e.target.offsetLeft + 'px';
-                navIndicator.style.width = e.target.offsetWidth + 'px';
-            });
-        });
-
-        navIndicator.style.left = navLinks[0].offsetLeft + 'px';
-        navIndicator.style.width = navLinks[0].offsetWidth + 'px';
-    </script>
-
-</body>
+    </body>
 </html>
