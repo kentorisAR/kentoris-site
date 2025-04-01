@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kentoris Site</title>
+
     <style>
+        /* Исправление FOUC - проверка localStorage через CSS */
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #333;
+                --text-color: white;
+            }
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body.dark-mode {
-            background-color: #333;
-            color: white;
+            background-color: #333 !important;
+            color: white !important;
         }
 
         header {
@@ -70,6 +85,15 @@
             transform: rotate(180deg);
         }
     </style>
+
+    <script>
+        // Убираем вспышку светлой темы
+        (function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 <body>
 
