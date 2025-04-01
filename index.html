@@ -6,7 +6,13 @@
     <title>Kentoris Site</title>
 
     <style>
-        /* Исправление FOUC - проверка localStorage через CSS */
+        /* Жёсткая фиксация темы перед загрузкой (100% убирает вспышку) */
+        html {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        /* Переменные для смены темы */
         :root {
             --bg-color: #f4f4f4;
             --text-color: #000;
@@ -87,11 +93,13 @@
     </style>
 
     <script>
-        // Убираем вспышку светлой темы
+        // Убираем вспышку полностью (страница скрыта, пока не применится тема)
         (function() {
             if (localStorage.getItem('darkMode') === 'true') {
                 document.documentElement.classList.add('dark-mode');
             }
+            document.documentElement.style.visibility = 'visible';
+            document.documentElement.style.opacity = '1';
         })();
     </script>
 </head>
@@ -140,20 +148,4 @@
 
             // Навигационный индикатор
             const navLinks = document.querySelectorAll('nav a');
-            const navIndicator = document.getElementById('nav-indicator');
-
-            function updateIndicator() {
-                const activeLink = [...navLinks].find(link => link.href.includes(window.location.pathname.split('/').pop()));
-                if (activeLink) {
-                    navIndicator.style.left = activeLink.offsetLeft + 'px';
-                    navIndicator.style.width = activeLink.offsetWidth + 'px';
-                }
-            }
-
-            updateIndicator();
-            window.addEventListener('resize', updateIndicator);
-        });
-    </script>
-
-</body>
-</html>
+            const navIndicator =
